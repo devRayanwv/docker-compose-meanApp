@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent {
   title = 'app';
    // Link to our api, pointing to localhost
-  API = 'http://10.10.2.58:3000';
+  API = 'http://10.10.2.33:3000';
 
   // Testing?
   // Declare empty list of people
@@ -31,7 +31,15 @@ export class AppComponent {
       .map(res => res.json())
       .subscribe(() => {
         this.getAllPeople();
-      })
+      });
+  }
+
+  addUser(name, username, password) {
+    this.http.post(`${this.API}/usersv`, {name, username, password})
+    .map(res => res.json())
+    .subscribe(() => {
+      this.getAllPeople();
+    });
   }
 
   // Get all users from the API
@@ -39,8 +47,8 @@ export class AppComponent {
     this.http.get(`${this.API}/users`)
       .map(res => res.json())
       .subscribe(people => {
-        console.log(people)
-        this.people = people
-      })
+        console.log(people);
+        this.people = people;
+      });
   }
 }

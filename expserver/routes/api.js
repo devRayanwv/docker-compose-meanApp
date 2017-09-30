@@ -2,26 +2,26 @@ const express = require('express');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 const router = express.Router();
-
+var Schema = mongoose.Schema;
 // MongoDB URL from the docker-compose file
-const dbHost = 'mongodb://database/mean-docker';
+const dbHost = 'mongodb://database/mean-docker/mongo/db';
 
 // Connect to mongodb
 mongoose.connect(dbHost);
 
-
 // create mongoose schema
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   name: String,
   age: Number
 });
+
 
 // create mongoose model
 const User = mongoose.model('User', userSchema);
 
 /* GET api listing. */
 router.get('/', (req, res) => {
-        res.send('api works');
+        res.send('api works woooorks');
 });
 
 /* GET all users. */

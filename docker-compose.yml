@@ -10,13 +10,18 @@ services:
       - /vagrant/data/docker-mean/angularclient:/usr/src/app
 
   express: #name of the second service
-    build: expserver # specify the directory of the Dockerfile
+    restart: always
     ports:
       - "3000:3000" #specify ports forewarding
+    volumes:
+      - /vagrant/data/docker-mean/expserver:/usr/src/app
     links:
       - database
+    build: expserver # specify the directory of the Dockerfile
 
   database: # name of the third service
-    image: mongo # specify image to build container from
+    build: mongo
     ports:
       - "27017:27017" # specify port forewarding
+    volumes:
+      - /home/vagrant/docker-mean-db:/data/db
