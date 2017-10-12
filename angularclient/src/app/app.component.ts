@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent {
   title = 'app';
    // Link to our api, pointing to localhost
-  API = 'http://10.10.2.33:3000';
+  API = 'http://192.168.43.158:3000';
 
   // Testing?
   // Declare empty list of people
